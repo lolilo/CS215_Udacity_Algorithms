@@ -20,9 +20,18 @@ def russian(a, b):
         b = b << 1
     return ans
 
+def recursive_russian(a, b):
+    if a == 0:
+        return 0
+    if a % 2 == 0: # a is even
+        return 2 * recursive_russian(a/2, b)
+    # a is odd
+    return b + 2 * recursive_russian((a-1)/2, b)
+
 def main():
     print naive(4, 5)
     print russian(14, 11) # 154
+    print recursive_russian(14, 11)
 
 if __name__ == "__main__":
     main()
